@@ -1,644 +1,545 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  <title>我的技术与生活——小站首页 | a repo that share knowledge</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="shortcut icon" href="/imgs/shortcut-icon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="/css/public.css" />
-  <link rel="stylesheet" href="/css/layout.css" />
-  <link rel="stylesheet" href="/css/iconfont.css" />
-  <link rel="stylesheet" href="/css/APlayer.min.css" />
-  <script src="/js/APlayer.min.js"></script>
-  <script src="/js/jquery.min.js"></script>
-  <script src="/js/jquery.pjax.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-  <script>
-    document.title = `我的技术与生活——小站首页`
-  </script>
+    
+
+    <title>Archives: 2023 | @*@</title>
+    <meta name="author" content="YuanChuan Ding">
+    
+    <meta name="description" content="welcome to this website">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+    <meta property="og:site_name" content="a repo that share knowledge"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="a repo that share knowledge" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <meta name="generator" content="Hexo 6.3.0"></head>
 
-<style>
-  .load {
-    width: 100%;
-    height: 100vh;
-    background-color: rgb(37, 35, 40);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 9999;
-  }
-  .load-circle {
-    width: 80px;
-    height: 80px;
-    border: 8px solid orange;
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: rotate 1s linear infinite;
-    filter: drop-shadow(0 0 3px orange);
-  }
-  .load-circle-inner {
-    width: 40px;
-    height: 40px;
-    border: 8px solid orange;
-    border-top-color: transparent;
-    border-radius: 50%;
-    animation: rotate-reverse .5s linear infinite;
-  }
-  .load-text {
-    margin-top: 20px;
-    font-size: 24px;
-    color: orange;
-    display: flex;
-  }
-  .load-text span {
-    margin: 0 5px;
-    text-shadow: 5px 5px 5px orange;
-    animation: move 1s linear infinite;
-  }
-  .load-text span:nth-child(1) {
-    animation-delay: -0.6s;
-  }
-  .load-text span:nth-child(2) {
-    animation-delay: -0.5s;
-  }
-  .load-text span:nth-child(3) {
-    animation-delay: -0.4s;
-  }
-  .load-text span:nth-child(4) {
-    animation-delay: -0.3s;
-  }
-  .load-text span:nth-child(5) {
-    animation-delay: -0.2s;
-  }
-  .load-text span:nth-child(6) {
-    animation-delay: -0.1s;
-  }
-  @keyframes rotate {
-    0% { transform: rotate(0); }
-    100% { transform: rotate(360deg); }
-  }
-  @keyframes rotate-reverse {
-    0% { transform: rotate(0); }
-    100% { transform: rotate(-360deg); }
-  }
-  @keyframes move {
-    0% { transform: translateY(0%) rotate(0) scale(1); }
-    20% { transform: translateY(20%) rotate(10deg) scale(1.2); }
-    80% { transform: translateY(-10%) rotate(-20deg) scale(.8);}
-    100% { transform: translateY(0) rotate(0) scale(1); }
-  }
 
-  .progress {
-    position: fixed;
-    left: 0; top: 0;
-    width: 0;
-    height: 3px;
-    background-color: green;
-    transition: all cubic-bezier(0.215, 0.610, 0.355, 1) .1s;
-    z-index: 9999;
-  }
-
-  .to-up {
-    animation: toUp .5s 1;
-  }
-  .gray {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 9999;
-    display: none;
-    pointer-events: none;
-    background-color: #000;
-    mix-blend-mode: color;
-  }
-  @keyframes toUp {
-    from { transform: translateY(15px); opacity: 0; }
-    to { transform: translateY(0) ; opacity: 1; }
-  }
-</style>
 <body>
-  <div id="load" class="load">
-    <div class="load-circle">
-      <div class="load-circle-inner"></div>
-    </div>
-    <p class="load-text">
-      <span>L</span>
-      <span>O</span>
-      <span>A</span>
-      <span>D</span>
-      <span>I</span>
-      <span>N</span>
-      <span>G</span>
-    </p>
-  </div>
-  <div id="container" class="container w-100 vh-100" style="display: none;">
-    <header class="header">
-  <div class="header-wrapper">
-    <div class="header-left">
-      <div class="header-search">
-        <input id="search-input" type="text" class="header-search--input" placeholder="请输入要检索的文章标题" />
-        <span id="search-btn" class="header-search--icon"><i class="iconfont icon-sousuo"></i></span>
-      </div>
-      <div id="search-layer" class="header-search--layer hidden">
-        <p class="title">
-          <span>以下是搜索内容：</span>
-          <span id="close-layer-btn">关闭</span>
-        </p>
-        <ul>
-        </ul>
-      </div>
-    </div>
-    <div class="header-right">
-      <ul class="header-menu">
-        <li>
-          <a href="http://smallwhiteawhite.github.io/">
-            <i class="header-menu--icon iconfont icon-shouye"></i>
-            <span class="header-menu--span">首页</span>
-          </a>
-        </li>
-        <li>
-          <a href="http://smallwhiteawhite.github.io/log">
-            <i class="header-menu--icon iconfont icon-rizhi"></i>
-            <span class="header-menu--span">日志</span>
-          </a>
-        </li>
-        <li>
-          <a href="http://smallwhiteawhite.github.io/link">
-            <i class="header-menu--icon iconfont icon-youqinglianjie"></i>
-            <span class="header-menu--span">友情链接</span>
-          </a>
-        </li>
-        <li>
-          <a href="http://smallwhiteawhite.github.io/about">
-            <i class="header-menu--icon iconfont icon-guanyuwomen"></i>
-            <span class="header-menu--span">关于我</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</header>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
 
-<script>
-  const ipt = document.querySelector('#search-input')
-  const btn = document.querySelector('#search-btn')
-  const layer = document.querySelector('#search-layer')
-  const posts = JSON.parse(`[{"title":"Hello World","path":"2023/09/12/hello-world/"},{"title":"是一个例子","path":"2023/09/12/是一个例子/"}]`)
-  ipt.addEventListener('keyup', e => {
-    if (e.key === 'Enter') {
-      handleSearch()
-    }
-  })
-  btn.addEventListener('click', () => {
-    handleSearch()
-  })
-
-  document.querySelector('#close-layer-btn').addEventListener('click', () => {
-    layer.classList.toggle('hidden')
-  })
-
-  function handleSearch() {
-    if (ipt.value.trim() === '') {
-      return
-    }
-    let html = ''
-    const targetPosts = posts.filter(post => post.title.includes(ipt.value))
-    targetPosts.forEach(post => {
-      html += `
-        <li>
-          <div>
-            <a href="/${post.path}">${post.title.replace(new RegExp(ipt.value), `<span>${ipt.value}</span>`)}</a>
-          </div>
-          <img src="${post.cover || '/imgs/default-cover.webp' }" />
+    <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">a repo that share knowledge</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            Home
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            Archives
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            Reading
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            About
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            Search
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="http://ww2.sinaimg.cn/small/74990035jw1f1rjkd681bj20rs0rsdhg.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">你的大名</p>
+                        <p class="desc">Web前端/iOS/技术宅</p>
+                    </div>
+                </div>
+            </div>
         </li>
-      `
-    })
-    if (html.trim () === '') {
-      html += '<p class="empty">没有搜索到内容</p>'
-    }
-    layer.querySelector('ul').innerHTML = html
-    layer.classList.remove('hidden')
-  }
-</script> 
-    <section id="main" class="main">
-      <div class="main-left-wrapper">
-<div class="main-left">
-  <div class="main-left--block">
-    <div class="main-left--info">
-      <img src="/imgs/avatar.jpg"" class="main-left--avatar" />
-      <div class="main-left--intro">
-        <p class="main-left--name">YuanChuan</p>
-        <div class="main-left--tags">
-          <span class="main-left--tag">working</span>
-          <span class="main-left--tag">sleeping</span>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    Home
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    Archives
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    Categories
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    Reading
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    About
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    Search
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+    </ul>
+</div>
+
         </div>
-      </div>
     </div>
-  
-    <div>
-      <div class="main-left--motto">
-        <p>“到中流击水，浪遏飞舟”</p>
-        <p>“le vent se leve,il faut tenter”</p>
-      </div>
-      <div class="main-left--github">
-        <span class="line"></span>
-        <a target="_blank" rel="noopener" href="https://github.com/smallwhiteawhite"><i class="logo iconfont icon-github-fill"></i></a>
-        <span class="line"></span>
-      </div>
-      <div class="main-left--statics">
-        <a href="/categories">
-          <div>
-            <span>0</span>
-            <span>分类</span>
-          </div>
-        </a>
-        <a href="/tags">
-          <div>
-            <span>0</span>
-            <span>标签</span>
-          </div>
-        </a>
-        <a href="/archives">
-          <div>
-            <span>1 </span>
-            <span>归档</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
+</nav>
 
-  <div class="main-left--block">
-    <ul class="main-left--menu">
-      
-        <li>
-          <a href="/">
-            <span class="header-menu--span">小站首页</span>
-            <i class="header-menu--icon iconfont icon-shouye"></i>
-          </a>
-        </li>
-      
-        <li>
-          <a href="/log">
-            <span class="header-menu--span">个人日志</span>
-            <i class="header-menu--icon iconfont icon-rizhi"></i>
-          </a>
-        </li>
-      
-        <li>
-          <a href="/link">
-            <span class="header-menu--span">友情链接</span>
-            <i class="header-menu--icon iconfont icon-youqinglianjie"></i>
-          </a>
-        </li>
-      
-        <li>
-          <a href="/about">
-            <span class="header-menu--span">关于自己</span>
-            <i class="header-menu--icon iconfont icon-guanyuwomen"></i>
-          </a>
-        </li>
-      
-        <li>
-          <a href="/tools">
-            <span class="header-menu--span">我的工具</span>
-            <i class="header-menu--icon iconfont icon-gongju"></i>
-          </a>
-        </li>
-      
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">Search</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    
+
+<nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">Current page(Archives)</span>
+        
+
+        
+    </div>
+</nav>
+
+
+
+    <ul class="collapsible mt-0" data-collapsible="accordion">
+        
+        
+            <li>
+                <div class="collapsible-header active">
+                    <i class="fa fa-archive"></i>2023
+                </div>
+                <div class="collapsible-body">
+                    <div class="collection">
+                        
+                            <a href="/2023/09/12/%E6%98%AF%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90/" class="collection-item grey-text text-darken-1">
+                                <time datetime="2023-09-12T08:43:19.960Z">2023-09-12</time>
+                                <span>&nbsp;&nbsp;&nbsp;</span>
+                                是一个例子
+                            </a>
+                        
+                            <a href="/2023/09/12/hello-world/" class="collection-item grey-text text-darken-1">
+                                <time datetime="2023-09-12T03:59:41.686Z">2023-09-12</time>
+                                <span>&nbsp;&nbsp;&nbsp;</span>
+                                Hello World
+                            </a>
+                        
+                    </div>
+                </div>
+            </li>
+        
+    </ul>
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="Return to top"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="Menu"><i class="fa fa-navicon"></i></a></li>
     </ul>
   </div>
 
-  <div class="main-left--block">
-    <div class="main-left--site">
-      <h5 class="main-left--title">
-        <span>站点信息</span>
-        <i class="iconfont icon-zhandian"></i>
-      </h5>
-      <p class="main-left--subtitle">
-        <span>文章数目：</span>
-        <span>2 篇</span>
-      </p>
-      <p class="main-left--subtitle">
-        <span>最近动态：</span>
-        <span>今天</span>
-      </p>
-      <p class="main-left--subtitle">
-        <span>上线时间：</span>
-        <span>2天</span>
-      </p>
-      <p class="main-left--subtitle">
-        <span>当前版本：</span>
-        <span>v1.0.2</span>
-      </p>
+    </main>
+    <footer class="page-footer indigo darken-1">
+    
+    <div class="footer-container container">
+        <div class="row">
+            
+            <div class="social-group col m4 s12">
+                <h5 class="white-text">Social</h5>
+                
+                    <a class="social-link" href="http://weibo.com/1956184117" target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/raytaylorlin" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+                    <a class="social-link" href="/atom.xml" target="_blank">
+                        <i class="fa fa-2x fa-rss"></i>
+                    </a>
+                
+                
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <div class="site-visitors-container white-text">
+        <span>
+            <i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        <span>
+            <i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+        </span>
     </div>
-  </div>
-</div></div>
-      <div id="main-container" class="main-container"><link rel="stylesheet" href="/css/partial/archive.css" />
 
 
-
-    <link rel="stylesheet" href="/css/partial/index.css" />
-
-
-
-<div class="index">
-  <div class="index-left">
-    
-      <div class="index-article">
-        <!-- <img class="index-article--cover" src="/imgs/default-cover.webp" alt=""> -->
-        <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="是一个例子" />
-        </div>
-        <div class="index-article--content">
-          <a href="/2023/09/12/%E6%98%AF%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90/">是一个例子 </a>
-          <div>
+            </div>
             
+
             
-          </div>
-          <div class="bg"></div>
-        </div>
-      </div>
-    
-  </div>
-  <div class="index-center">
-    
-      <div class="index-article">
-        <!-- <img class="index-article--cover" data-cover="" src="/imgs/default-cover.webp" alt=""> -->
-        <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="Hello World" />
-        </div>
-        <div class="index-article--content">
-          <a href="/2023/09/12/hello-world/">Hello World </a>
-          <div>
+            <div class="col m8 s12">
+                <h5 class="white-text">Links</h5>
+                
+                    <a class="social-link" href="http://raytaylorlin.com/" target="_blank">raytaylorism主题作者的技术博客</a>
+                
+                    <a class="social-link" href="https://github.com/raytaylorlin" target="_blank">Github地址（测试友情链接）</a>
+                
+            </div>
             
-            
-          </div>
-          <div class="bg"></div>
         </div>
-      </div>
-    
-  </div>
-  <div class="index-right">
-    <div class="index-right-wrapper">
-      
-      
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">2023年09月</a><span class="archive-list-count">2</span></li></ul>
     </div>
-  </div>
+    
+
+    <div class="footer-copyright pink-link-context">
+        <div class="container">
+            © 2016 example.com, All rights reserved.
+            <p class="right" style="margin-top: 0;">Blog powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
 </div>
 
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
 
 <script>
-  var allImgBoxs = document.querySelectorAll('.index-article--box');
-  var windowHeight = window.innerHeight;
-  var boxs = Array.from(allImgBoxs);
-  var timer = null;
-  boxs.forEach((box, idx) => {
-    if (!window.loadImageSet || !window.loadImageSet.includes(idx)) {
-      box.classList.add('img-loading');
-    } else {
-      const imgDom = box.querySelector('img');
-      imgDom.src = imgDom.dataset.cover;
-    }
-  });
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
 
-  function scrollFn() {
-    if (timer) {
-      return;
-    }
-    timer = setTimeout(() => {
-      loadImage();
-      timer = null;
-    }, 100)
-  }
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
 
-  setTimeout(() => {
-    loadImage();
-  }, 100);
-  if (!window.loadedImage) {
-    document.addEventListener('scroll', scrollFn);
-  }
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
 
-  function loadImage() {
-    const doc = document.documentElement;
-    const scrollTop = doc.scrollTop;
-    if (boxs.every(box => box.loadedImage)) {
-      document.removeEventListener('scroll', scrollFn);
-      window.loadedImage = 1;
-      return;
-    }
-    boxs.forEach((box, idx) => {
-      if (box.loadedImage) {
-        return;
-      }
-      if (box.getBoundingClientRect().top < windowHeight) {
-        const imgDom = box.querySelector('img');
-        imgDom.src = imgDom.dataset.cover;
-        // 图片成功加载
-        imgDom.onload = () => {
-          box.classList.remove('img-loading');
-          box.loadedImage = true;
-          if (!window.loadImageSet) {
-            window.loadImageSet = [];
-          }
-          window.loadImageSet.push(idx);
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+            // 添加new标签
+            $('.menu-reading, .menu-about').append('<span class="new badge pink"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
         }
-        // 图片加载失败
-        imgDom.onerror = () => {
-          box.classList.remove('img-loading');
-          box.classList.add('img-error');
-          imgDom.src = '/imgs/404.png';
-        }
-      }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
     });
-  }
-</script> 
-</div>
-      <div class="main-right-wrapper"><div class="main-right">
-  <div class="main-right--board">
-    <div class="main-right--title">
-      <h5>公告栏</h5>
-      <i class="iconfont icon-gonggao"></i>
-    </div>
-    <div class="main-right--content">
-      hello everyone,thanks for your visiting,let's get stronger 
-    </div>
-  </div>
-
-  <div id="aplayer" class="main-right--music"></div>
-
-  <div class="operate-items">
-    <div class="operate-item backtop">
-      <i class="iconfont icon-huidaodingbu"></i>
-      <span>回到顶部</span>
-    </div>
-    
-    <div class="operate-item turn-comment hidden">
-      <i class="iconfont icon-pinglun"></i>
-      <span>查看评论</span>
-    </div>
-    
-  </div>
-
-  <div class="main-right--site">
-    <div class="main-right--power">
-      <p>Power By <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a>.</p>
-      <p>Theme：<a target="_blank" rel="noopener" href="https://github.com/Aizener/hexo-theme-cola">Cola.</a></p>
-    </div>
-    <p class="main-right--refer"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/#/Integrated/index">made by YuanChuan</a> </p>
-  </div>
-</div>
-
-<script>
-  function setOperateItem () {
-    const reg = /\d{4}\/\d{2}\/\d{2}\/.+/
-    const path = location.pathname
-    const operateDom = document.querySelector('.main-right .operate-items')
-    const commentDom = document.querySelector('.turn-comment')
-    const cateloguDom = document.querySelector('.article-catelogue > .article-catelogue--wrapper');
-
-    if (commentDom) {
-      if (reg.test(path) || path.match(/\/log\/.+/)) {
-        commentDom.classList.remove('hidden')
-        const newDom = operateDom.cloneNode(true);
-        const _backtopDom = newDom.querySelector('.backtop');
-        const _commentDom = newDom.querySelector('.turn-comment');
-        _backtopDom.addEventListener('click', () => backTopEvent());
-        _commentDom.addEventListener('click', () => commentDomEvent());
-        cateloguDom.appendChild(newDom);
-      } else {
-        commentDom.classList.add('hidden')
-      }
-    }
-  }
-
-  setOperateItem()
-  const musics = JSON.parse(`[{"name":"Clair de Lune","artist":"月光","url":"music/Kun Woo Paik - Clair de Lune (from Suite Bergama.MP3","cover":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo0SWQx6YrNA8lElaG4OOKLkNkNzLO1PflKg&usqp=CAU"}]`)
-  const ap = new APlayer({
-    container: document.querySelector('#aplayer'),
-    audio: musics,
-  })
-
-  $(document).on('pjax:complete', function() {
-    setOperateItem()
-  })
-
-  document.querySelector('.backtop').addEventListener('click', () => {
-    backTopEvent();
-  })
-  const dom = document.querySelector('.turn-comment')
-  dom && dom.addEventListener('click', () => {
-    commentDomEvent();
-  })
-
-  function backTopEvent() {
-    document.documentElement.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
-  }
-
-  function commentDomEvent() {
-    const commentDom = document.querySelector('.comments-intro')
-    if (!commentDom) return
-    const top = commentDom.offsetTop, height = commentDom.offsetHeight
-    document.documentElement.scrollTo({
-      top: top - 2 * height,
-      behavior: 'smooth'
-    })
-  }
-</script></div>
-    </section>
-  </div>
-  <div id="progress" class="progress"></div>
-  <div id="gray" class="gray"></div>
-
-  <script>
-    function initScroll () {
-      document.addEventListener('scroll', () => {
-        const doc = document.documentElement
-        const scrollTop = doc.scrollTop
-        const pageHeight = doc.offsetHeight
-        const clientHeight = doc.clientHeight
-        const ratio = scrollTop / (pageHeight - clientHeight)
-        const progress = document.querySelector('#progress')
-        const avatarImg = document.querySelector('.main-left--avatar')
-        progress.style.width = (100 * ratio) + '%'
-        avatarImg.style.transform = `rotate(${360 * ratio}deg)`
-      })
-    }
-
-    const rootPath = "/"
-
-    const checkAndSetArticlePageLayout = () => {
-      const path = location.pathname.replace(rootPath, '');
-      if (
-        /^\/?\d{4}\/\d{2}\/\d{2}\/.*/.test(path) ||
-        /^log\/.+/.test(path)
-      ) {
-        $('.main-container, .main-right, .main-right-wrapper').addClass('is-article')
-      } else {
-        $('.main-container, .main-right, .main-right-wrapper').removeClass('is-article')
-      }
-    }
-
-    const gray = "none"
-    const setGrayStyle = () => {
-      if (gray === 'none') {
-        return
-      } else if (gray === 'index') {
-        location.pathname === '/' ? $('#gray').show() : $('#gray').hide()
-      } else if (gray === 'all') {
-        $('#gray').show()
-      }
-    }
-    setGrayStyle()
+</script>
 
 
-    window.onload = function () {
-      checkAndSetArticlePageLayout()
-      setTimeout(() => {
-        $('#load').slideUp()
-        $('#container').slideToggle()
-        setTimeout(() => {
-          initScroll();
-        }, 500)
-      }, 500)
-    }
-    
-    let status = 0
-    // 对所有链接跳转事件绑定pjax容器container
-    $(document).pjax('a[target!=_blank]', '#main-container', {
-      container: '#main-container',
-      fragment: '#main-container',
-      timeout: 8000
-    })
 
-    $(document).on('pjax:start', function() {
-    })
-    $(document).on('pjax:complete', function() {
-      status = 0
-      $('.main-container').addClass('to-up').on('animationend', function() {
-        $(this).removeClass('to-up')
-      })
-      setGrayStyle()
-      checkAndSetArticlePageLayout()
-    })
-    $(document).on('pjax:popstate', function() {
-      status = -1
-      checkAndSetArticlePageLayout()
-    });
-  </script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
 </body>
 </html>
