@@ -193,7 +193,7 @@
   const ipt = document.querySelector('#search-input')
   const btn = document.querySelector('#search-btn')
   const layer = document.querySelector('#search-layer')
-  const posts = JSON.parse(`[{"title":"Hello World","path":"2023/09/12/hello-world/"},{"title":"是一个例子","path":"2023/09/12/是一个例子/"}]`)
+  const posts = JSON.parse(`[{"title":"是一个例子","path":"2023/09/12/是一个例子/"},{"title":"Hello World","path":"2023/09/12/hello-world/"}]`)
   ipt.addEventListener('keyup', e => {
     if (e.key === 'Enter') {
       handleSearch()
@@ -524,7 +524,7 @@
   }
 
   setOperateItem()
-  const musics = JSON.parse(`[{"name":"Clair de Lune","artist":"月光","url":"music/Kun Woo Paik - Clair de Lune (from Suite Bergama.MP3","cover":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo0SWQx6YrNA8lElaG4OOKLkNkNzLO1PflKg&usqp=CAU"},{"name":"Merry-Go-Arround","artist":"旋转木马","url":"久石譲 - Merry-Go-Round.MP3","cover":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo0SWQx6YrNA8lElaG4OOKLkNkNzLO1PflKg&usqp=CAU"},{"name":"salut d'amour","artist":"爱的礼赞","url":"Classic Piano - Salut D'amour.MP3","cover":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo0SWQx6YrNA8lElaG4OOKLkNkNzLO1PflKg&usqp=CAU"}]`)
+  const musics = JSON.parse(`[{"name":"Merry-Go-Arround","artist":"旋转木马","url":"久石譲 - Merry-Go-Round.MP3","cover":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo0SWQx6YrNA8lElaG4OOKLkNkNzLO1PflKg&usqp=CAU"},{"name":["Clair de Lune","月光","music/Kun Woo Paik - Clair de Lune (from Suite Bergama.MP3","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo0SWQx6YrNA8lElaG4OOKLkNkNzLO1PflKg&usqp=CAU"],"cover":"/"},{"name":"salut d'amour","artist":"爱的礼赞","url":"Classic Piano - Salut D'amour.MP3","cover":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo0SWQx6YrNA8lElaG4OOKLkNkNzLO1PflKg&usqp=CAU"}]`)
   const ap = new APlayer({
     container: document.querySelector('#aplayer'),
     audio: musics,
