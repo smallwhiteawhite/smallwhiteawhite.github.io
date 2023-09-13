@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>我的技术与生活——小站首页 | a repo that share knowledge</title>
+  <title>我的技术与生活——是一个例子 | a repo that share knowledge</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="/imgs/shortcut-icon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/public.css" />
@@ -16,7 +16,7 @@
 
   <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
   <script>
-    document.title = `我的技术与生活——小站首页`
+    document.title = `我的技术与生活——是一个例子`
   </script>
 <meta name="generator" content="Hexo 6.3.0"></head>
 
@@ -193,7 +193,7 @@
   const ipt = document.querySelector('#search-input')
   const btn = document.querySelector('#search-btn')
   const layer = document.querySelector('#search-layer')
-  const posts = JSON.parse(`[{"title":"Hello World","path":"2023/09/12/hello-world/"},{"title":"","path":"2023/09/12/是一个例子/"}]`)
+  const posts = JSON.parse(`[{"title":"Hello World","path":"2023/09/12/hello-world/"},{"title":"是一个例子","path":"2023/09/12/是一个例子/"}]`)
   ipt.addEventListener('keyup', e => {
     if (e.key === 'Enter') {
       handleSearch()
@@ -247,8 +247,8 @@
   
     <div>
       <div class="main-left--motto">
-        <p>“le vent se leve, il faut tenter”</p>
         <p>“到中流击水，浪遏飞舟”</p>
+        <p>“le vent se leve,il faut tenter”</p>
       </div>
       <div class="main-left--github">
         <span class="line"></span>
@@ -351,7 +351,7 @@
 
 <div class="article-container">
   <div class="article">
-    <h1 class="article-title"></h1>
+    <h1 class="article-title">是一个例子</h1>
     <div class="article-info">
       <div class="article-info--item">
         <div class="article-info--info">
@@ -373,7 +373,7 @@
       </div>
     </div>
     <article class="article-content markdown-body">
-      <p>title: 是一个例子<br>date: 2018-08-02 11:41:10<br>tags:</p>
+      <p>date: 2018-08-02 11:41:10<br>tags:</p>
 <ul>
 <li>博客           &#x2F;&#x2F;多个标签可以这样添加</li>
 <li>hexo<br>categories: web前端</li>
@@ -515,7 +515,7 @@
   }
 
   setOperateItem()
-  const musics = JSON.parse(`[{"name":"安河桥","artist":"宋冬野","url":"http://ting6.yymp3.net:82/new25/songdongye/11.mp3","cover":"https://img2.baidu.com/it/u=1260056724,1076343118&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"},{"name":"卡布达","artist":"暂无","url":"music/kabuda.mp3","cover":"https://img2.baidu.com/it/u=705831265,2862720033&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"},{"name":"八连杀","artist":"苏三","url":"music/八连杀.mp3","cover":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo0SWQx6YrNA8lElaG4OOKLkNkNzLO1PflKg&usqp=CAU"}]`)
+  const musics = JSON.parse(`[{"name":"Clair de Lune","artist":"月光","url":"music/Kun Woo Paik - Clair de Lune (from Suite Bergama.flac","cover":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo0SWQx6YrNA8lElaG4OOKLkNkNzLO1PflKg&usqp=CAU"}]`)
   const ap = new APlayer({
     container: document.querySelector('#aplayer'),
     audio: musics,
