@@ -1,0 +1,396 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>计算机网络-第三章-网络层 | Le vent se lève, il faut tenter de vivre</title><meta name="author" content="YuanChuan"><meta name="copyright" content="YuanChuan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="计算机网络5层模型中的网络层1. 功能1.1 路由选择与转发（最佳路径） 路由算法  静态（非自适应路由算法）  管理员手工配置路由信息   动态（自适应）     路由器之间彼此交换信息，按路由算法优化出路由表项      全局性:链路状态路由算法OSPF Open Shortest Path First，开放式最短路径优先协议，使用分布式的链路状态协议  特点:1.所有路由器掌握完整信息2.适">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络-第三章-网络层">
+<meta property="og:url" content="http://smallwhiteawhite.github.io/2023/09/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%89%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82/index.html">
+<meta property="og:site_name" content="Le vent se lève, il faut tenter de vivre">
+<meta property="og:description" content="计算机网络5层模型中的网络层1. 功能1.1 路由选择与转发（最佳路径） 路由算法  静态（非自适应路由算法）  管理员手工配置路由信息   动态（自适应）     路由器之间彼此交换信息，按路由算法优化出路由表项      全局性:链路状态路由算法OSPF Open Shortest Path First，开放式最短路径优先协议，使用分布式的链路状态协议  特点:1.所有路由器掌握完整信息2.适">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://smallwhiteawhite.github.io/img/avt.jpg">
+<meta property="article:published_time" content="2023-09-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-09-15T14:21:01.860Z">
+<meta property="article:author" content="YuanChuan">
+<meta property="article:tag" content="计算机网络，计算机基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://smallwhiteawhite.github.io/img/avt.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://smallwhiteawhite.github.io/2023/09/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%89%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '计算机网络-第三章-网络层',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-09-15 22:21:01'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avt.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Le vent se lève, il faut tenter de vivre"><span class="site-name">Le vent se lève, il faut tenter de vivre</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">计算机网络-第三章-网络层</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-12T16:00:00.000Z" title="发表于 2023-09-13 00:00:00">2023-09-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-09-15T14:21:01.860Z" title="更新于 2023-09-15 22:21:01">2023-09-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="计算机网络-第三章-网络层"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2023/09/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%89%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2023/09/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%89%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="计算机网络5层模型中的网络层"><a href="#计算机网络5层模型中的网络层" class="headerlink" title="计算机网络5层模型中的网络层"></a>计算机网络5层模型中的网络层</h1><h2 id="1-功能"><a href="#1-功能" class="headerlink" title="1. 功能"></a>1. 功能</h2><h3 id="1-1-路由选择与转发（最佳路径）"><a href="#1-1-路由选择与转发（最佳路径）" class="headerlink" title="1.1 路由选择与转发（最佳路径）"></a>1.1 路由选择与转发（最佳路径）</h3><blockquote>
+<p>路由算法</p>
+<blockquote>
+<p>静态（非自适应路由算法）</p>
+<blockquote>
+<p>管理员手工配置路由信息</p>
+</blockquote>
+</blockquote>
+<p>动态（自适应）   </p>
+<blockquote>
+<p>路由器之间彼此交换信息，按路由算法优化出路由表项    </p>
+<blockquote>
+<p>全局性:链路状态路由算法OSPF<br> Open Shortest Path First，开放式最短路径优先协议，使用分布式的链路状态协议</p>
+<blockquote>
+<p>特点:1.所有路由器掌握完整信息<br>2.适用于规模很大的互联网，且收敛速度很快<br>3.全部路由器到最后都建立一个链路状态数据库，即全网拓扑图<br>4.采用Dijkstra算法    </p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>分散性:距离向量路由算法RIP,Routing Information Protocol 一种分布式的，基于距离向量的路由选择协议，是因特网的标准协议   </p>
+<blockquote>
+<p>特点:1.只掌握相邻路由器的信息<br>2.利用跳数来作为计量标准，最多15跳<br>3.适用于小网络   </p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>路由协议     </p>
+<blockquote>
+<p>自治系统AS（方便管理路由器，同时保密路由协议）<br>在互联网中，一个自治系统(AS)是一个有权自主地决定在本系统中应采用各种路由协议的小型单位   </p>
+</blockquote>
+<blockquote>
+<p>内部网关IGP    </p>
+<blockquote>
+<p>一个AS内使用RIP,OSPF   </p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>外部网关EGP      </p>
+<blockquote>
+<p>AS之间使用BGP<br>BGP协议:边界网关协议：Border Gateway Protocol      </p>
+<blockquote>
+<p>BGP 是唯一一个用来处理像因特网大小的网络的协议，也是唯一能够妥善处理好不相关路由域间的多路连接的协议<br>特点:<br>1.支持CIDR<br>2.发生变化时，变更有变化部分    </p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3 id="1-2-异构网络互联"><a href="#1-2-异构网络互联" class="headerlink" title="1.2 异构网络互联"></a>1.2 异构网络互联</h3><h3 id="1-3-拥塞控制"><a href="#1-3-拥塞控制" class="headerlink" title="1.3 拥塞控制"></a>1.3 拥塞控制</h3><h2 id="2-主要任务"><a href="#2-主要任务" class="headerlink" title="2.主要任务"></a>2.主要任务</h2><p>传输分组从源端到目的端。</p>
+<h2 id="3-传输单位"><a href="#3-传输单位" class="headerlink" title="3.传输单位"></a>3.传输单位</h2><blockquote>
+<p>数据报   </p>
+<blockquote>
+<p>IP数据报</p>
+<blockquote>
+<p>首部 + 内容 &#x3D; IP 数据报<br>首部 &#x3D; 版本 + 首部长度 + 源地址 + 目标地址 + …</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="4-设备"><a href="#4-设备" class="headerlink" title="4.设备"></a>4.设备</h2><p>路由器</p>
+<ul>
+<li><p>具备转发功能   </p>
+</li>
+<li><p>具备路由选择功能<br>选择最恰当的，用时最短的路径，使用软件实现。</p>
+</li>
+<li><p>由路由表生成转发表<br>  根据转发表进行转发</p>
+</li>
+<li><p>路由器和网桥可以互联两个不同的网段，集线器不能。</p>
+</li>
+</ul>
+<h2 id="5-两大平面"><a href="#5-两大平面" class="headerlink" title="5. 两大平面"></a>5. 两大平面</h2><p>网络层可以分为两大平面</p>
+<ul>
+<li><p>数据平面<br>功能：完成转发<br>地点：路由器内</p>
+</li>
+<li><p>控制平面<br>功能：完成路由选择<br>地点：<br>传统方法（每路由器法）：位于路由器内<br>CDN方法：位于远程控制器内</p>
+</li>
+</ul>
+<h1 id="6-协议（重要）"><a href="#6-协议（重要）" class="headerlink" title="6. 协议（重要）"></a>6. 协议（重要）</h1><h2 id="6-1-IP协议"><a href="#6-1-IP协议" class="headerlink" title="6.1 IP协议"></a>6.1 IP协议</h2><ul>
+<li>名称：网际互连协议，Internet Protocol   </li>
+<li>设计原则： 端到端。<br>IP只为主机提供一种<em><strong>无连接、不可靠的、尽力而为</strong></em>的数据包传输服务。</li>
+<li>主要内容<br>1.IP编址方案<br>2.分组封装格式<br>3.分组转发规则</li>
+<li>服务类型<br>1.IP信息包的传送<br>2.IP信息包的分割与重组</li>
+</ul>
+<h2 id="6-2-ARP"><a href="#6-2-ARP" class="headerlink" title="6.2 ARP"></a>6.2 ARP</h2><ul>
+<li>名称：地址解析协议，即ARP（Address Resolution Protocol）</li>
+<li>功能<br>  根据IP地址获取物理地址。</li>
+</ul>
+<h2 id="6-3-ICMP"><a href="#6-3-ICMP" class="headerlink" title="6.3 ICMP"></a>6.3 ICMP</h2><ul>
+<li><p>名称：ICMP（Internet Control Message Protocol）Internet控制报文协议。     </p>
+</li>
+<li><p>功能：在IP主机、路由器之间传递控制消息。     </p>
+<blockquote>
+<p>控制消息：控制消息是指网络通不通、主机是否可达、路由是否可用等网络本身的消息。这些控制消息虽然并不传输用户数据，但是对于用户数据的传递起着重要的作用。</p>
+<blockquote>
+<p>主要用于在主机与路由器之间传递控制信息，包括报告错误、交换受限控制和状态信息等。当遇到IP数据无法访问目标、IP路由器无法按当前的传输速率转发数据包等情况时，会自动发送ICMP消息。     </p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h2 id="6-4-IGMP"><a href="#6-4-IGMP" class="headerlink" title="6.4 IGMP"></a>6.4 IGMP</h2><ul>
+<li><p>名称：网际组管理协议。</p>
+</li>
+<li><p>功能：运行在主机和组播路由器之间。</p>
+</li>
+</ul>
+<h1 id="7-IP地址"><a href="#7-IP地址" class="headerlink" title="7.IP地址"></a>7.IP地址</h1><h2 id="7-1-IPv4"><a href="#7-1-IPv4" class="headerlink" title="7.1 IPv4"></a>7.1 IPv4</h2><ul>
+<li><p>4类IP地址<br>A类：第一个字节为网络号，后三个字节为主机号。地址的网络号取值于1<del>126之间。<br>B类：前两个字节为网络号，后两个字节为主机号。地址的网络号取值于128</del>191之间。<br>C类：前三个字节为网络号，最后一个字节为主机号。地址的网络号取值于192<del>223之间。<br>D类：是多播地址，D类IP地址的最前面为“1110”。地址的网络号取值于224</del>239之间。<br>E类：是保留地址。E类IP地址的最前面为“11110”。地址的网络号取值于240~255之间。</p>
+</li>
+<li><p>IP地址<br>&#x3D;｛&lt;网络号&gt;，&lt;主机号&gt;｝<br>全世界位唯一的32位标识符，标识路由器主机的接口。</p>
+</li>
+<li><p>IPv4地址紧张应对措施</p>
+<blockquote>
+<p>NAT：网络地址转换   </p>
+<blockquote>
+<p>在专用网连接到因特网的路由器上安装NAT软件，安装NAT路由器，它至少有一个有效的外部全球IP地址。</p>
+</blockquote>
+<p>无分类编址CIDR     </p>
+<blockquote>
+<p>消除传统的ABC类地址以及划分子网的概念，IP地址后加入“&#x2F;”，然后写上网络前缀（可以任意长度）的位数。</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h2 id="7-2-IPv6"><a href="#7-2-IPv6" class="headerlink" title="7.2 IPv6"></a>7.2 IPv6</h2><ul>
+<li>基本地址类型 <blockquote>
+<p>单播</p>
+<blockquote>
+<p>一对一通信，可做源地址+目的地址    </p>
+</blockquote>
+<p>多播    </p>
+<blockquote>
+<p>一对多通信，可做目的地址<br>三种常用算法    </p>
+<blockquote>
+<p>协议无关的组播<br>基于链路状态的路由选择<br>基于距离向量的路由选择  </p>
+</blockquote>
+</blockquote>
+<p>任播</p>
+<blockquote>
+<p>一对多中的一个通信，可做目的地址</p>
+</blockquote>
+<p>128位地址</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="IPv6向IPv4过渡方法"><a href="#IPv6向IPv4过渡方法" class="headerlink" title="IPv6向IPv4过渡方法"></a>IPv6向IPv4过渡方法</h2><ul>
+<li><p>双栈协议 </p>
+</li>
+<li><p>隧道技术</p>
+</li>
+</ul>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://smallwhiteawhite.github.io">YuanChuan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://smallwhiteawhite.github.io/2023/09/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%89%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82/">http://smallwhiteawhite.github.io/2023/09/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%89%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://smallwhiteawhite.github.io" target="_blank">Le vent se lève, il faut tenter de vivre</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机网络，计算机基础</a></div><div class="post_share"><div class="social-share" data-image="/img/avt.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/09/13/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%B8%80%E7%AB%A0/" title="操作系统-第一章"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">操作系统-第一章</div></div></a></div><div class="next-post pull-right"><a href="/2023/09/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%89%A9%E7%90%86%E5%B1%82/" title="计算机网络-第一章-物理层"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机网络-第一章-物理层</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/09/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%89%A9%E7%90%86%E5%B1%82/" title="计算机网络-第一章-物理层"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-09-13</div><div class="title">计算机网络-第一章-物理层</div></div></a></div><div><a href="/2023/09/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E9%93%BE%E8%B7%AF%E5%B1%82/" title="计算机网络-第二章-链路层"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-09-13</div><div class="title">计算机网络-第二章-链路层</div></div></a></div><div><a href="/2023/09/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BB%AA%E8%AE%BA/" title="计算机网络-绪论"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-09-13</div><div class="title">计算机网络-绪论</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div class="comment-switch"><span class="first-comment">Valine</span><span id="switch-btn"></span><span class="second-comment">Disqus</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avt.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">YuanChuan</div><div class="author-info__description">welcome to this website</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/smallwhiteawhite"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">到中流击水，浪遏飞舟</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C5%E5%B1%82%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="toc-text">计算机网络5层模型中的网络层</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8A%9F%E8%83%BD"><span class="toc-text">1. 功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E4%B8%8E%E8%BD%AC%E5%8F%91%EF%BC%88%E6%9C%80%E4%BD%B3%E8%B7%AF%E5%BE%84%EF%BC%89"><span class="toc-text">1.1 路由选择与转发（最佳路径）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%BC%82%E6%9E%84%E7%BD%91%E7%BB%9C%E4%BA%92%E8%81%94"><span class="toc-text">1.2 异构网络互联</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="toc-text">1.3 拥塞控制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B8%BB%E8%A6%81%E4%BB%BB%E5%8A%A1"><span class="toc-text">2.主要任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BC%A0%E8%BE%93%E5%8D%95%E4%BD%8D"><span class="toc-text">3.传输单位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%AE%BE%E5%A4%87"><span class="toc-text">4.设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%B8%A4%E5%A4%A7%E5%B9%B3%E9%9D%A2"><span class="toc-text">5. 两大平面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E5%8D%8F%E8%AE%AE%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89"><span class="toc-text">6. 协议（重要）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-IP%E5%8D%8F%E8%AE%AE"><span class="toc-text">6.1 IP协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-ARP"><span class="toc-text">6.2 ARP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-ICMP"><span class="toc-text">6.3 ICMP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-4-IGMP"><span class="toc-text">6.4 IGMP</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-IP%E5%9C%B0%E5%9D%80"><span class="toc-text">7.IP地址</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-IPv4"><span class="toc-text">7.1 IPv4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-IPv6"><span class="toc-text">7.2 IPv6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPv6%E5%90%91IPv4%E8%BF%87%E6%B8%A1%E6%96%B9%E6%B3%95"><span class="toc-text">IPv6向IPv4过渡方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text"></span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E5%9B%9B%E7%AB%A0/" title="操作系统-第四章">操作系统-第四章</a><time datetime="2023-09-14T14:38:51.888Z" title="发表于 2023-09-14 22:38:51">2023-09-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%B8%89%E7%AB%A0/" title="操作系统-第三章">操作系统-第三章</a><time datetime="2023-09-14T14:38:44.644Z" title="发表于 2023-09-14 22:38:44">2023-09-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%8C%E7%AB%A0/" title="操作系统-第二章">操作系统-第二章</a><time datetime="2023-09-14T14:38:38.746Z" title="发表于 2023-09-14 22:38:38">2023-09-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%85%AD%E7%AB%A0/" title="计算机网络-第六章">计算机网络-第六章</a><time datetime="2023-09-13T15:23:48.594Z" title="发表于 2023-09-13 23:23:48">2023-09-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0/" title="计算机网络-第五章">计算机网络-第五章</a><time datetime="2023-09-13T15:23:32.451Z" title="发表于 2023-09-13 23:23:32">2023-09-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By YuanChuan</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><script>(() => {
+  const disqus_config = function () {
+    this.page.url = 'http://smallwhiteawhite.github.io/2023/09/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%89%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82/'
+    this.page.identifier = '/2023/09/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%89%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82/'
+    this.page.title = '计算机网络-第三章-网络层'
+  }
+
+  const disqusReset = () => {
+    window.DISQUS && window.DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  btf.addGlobalFn('themeChange', disqusReset, 'disqus')
+
+  const loadDisqus = () =>{
+    if (window.DISQUS) disqusReset()
+    else {
+      const script = document.createElement('script')
+      script.src = 'https://.disqus.com/embed.js'
+      script.setAttribute('data-timestamp', +new Date())
+      document.head.appendChild(script)
+    }
+  }
+
+  const getCount = async() => {
+    try {
+      const eleGroup = document.querySelector('#post-meta .disqus-comment-count')
+      if (!eleGroup) return
+      const cleanedLinks = eleGroup.href.replace(/#post-comment$/, '')
+
+      const res = await fetch(`https://disqus.com/api/3.0/threads/set.json?forum=&api_key=&thread:link=${cleanedLinks}`,{
+        method: 'GET'
+      })
+      const result = await res.json()
+
+      const count = result.response.length ? result.response[0].posts : 0
+      eleGroup.textContent = count
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  if ('Valine' === 'Disqus' || !false) {
+    if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+    else {
+      loadDisqus()
+      GLOBAL_CONFIG_SITE.isPost && getCount()
+    }
+  } else {
+    window.loadOtherComment = loadDisqus
+  }
+})()</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
